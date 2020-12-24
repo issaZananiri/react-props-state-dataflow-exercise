@@ -19,21 +19,33 @@ class App extends Component {
         { day: "Tuesday", time: 1930, name: "Linda" },
         { day: "Wednesday", time: 2015, name: "Anni" }],
       user: "Robyn",
+      companies : [
+        { name: "Tesla", revenue: 140 },
+        { name: "Microsoft", revenue: 300 },
+        { name: "Google", revenue: 600 }
+  ],
       store: [
         { item: "XSPS Pro Player", price: 800, discount: 0.2, hottest: false },
         { item: "Gizem Backwatch", price: 230, discount: 0.6, hottest: false },
         { item: "Surround Sound Pelican", price: 3099, discount: 0.05, hottest: true }
       ],
+ 
       shouldDiscount: false,
       currentPage: "Landing"
     }
   }
   // SPOT-CHECK-2: 
-  //  your generateCompanyTags method here 
+  generateCompanyTags(companies){
+    let companyTags = []
+    for (let c of companies) {
+      companyTags.push(<Company name={c.name} revenue={c.revenue} />)
+    }
+    return companyTags
+  
+  }
 
   // SPOT-CHECK-3:
-  // your upperCase method here
-
+  upperCase = name => name.toUpperCase()
   render() {
 
     let companies = [
@@ -49,49 +61,57 @@ class App extends Component {
         <div className="ex-space">
           <h4 className="ex-title">Spotcheck 1</h4>
           <div className="exercise" id="spotcheck-1">
-            {/* your code here */}
+            { <Company name={companies[0].name} revenue={companies[0].revenue} />}
           </div>
         </div>
 
         <div className="ex-space">
           <h4 className="ex-title">Spotcheck 2</h4>
           <div className="exercise" id="spotcheck-2">
-            {/* your code here */}
+            {  <div>
+        {this.generateCompanyTags(companies)}
+      </div>}
           </div>
         </div>
 
         <div className="ex-space">
           <h4 className="ex-title">Spotcheck 3</h4>
           <div className="exercise" id="spotcheck-3">
-            {/* your code here */}
+          {companies.map(c =>
+          <Company
+            name={this.upperCase(c.name)}
+            revenue={c.revenue} />)}
           </div>
         </div>
 
         <div className="ex-space">
           <h4 className="ex-title">Spotcheck 4</h4>
           <div className="exercise" id="spotcheck-4">
-            {/* your code here */}
+        {  <Wardrobe />}
           </div>
         </div>
 
         <div className="ex-space">
           <h4 className="ex-title">Spotcheck 5</h4>
           <div className="exercise" id="spotcheck-5">
-            {/* your code here */}
+            <Wardrobe2 />
           </div>
         </div>
 
         <div className="ex-space">
           <h4 className="ex-title">Spotcheck 6</h4>
           <div className="exercise" id="spotcheck-6">
-            {/* your code here */}
+            {this.state.companies.map(c => <Company name={c.name} revenue={c.revenue} />)}
           </div>
         </div>
 
         <div className="ex-space">
           <h4 className="ex-title">Spotcheck 7</h4>
           <div className="exercise" id="spotcheck-7">
-            {/* your code here */}
+          <div>
+        <Calendar reservations={this.state.reservations} />
+        <Register reservations={this.state.reservations} />
+      </div>
           </div>
         </div>
 
