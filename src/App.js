@@ -123,23 +123,24 @@ class App extends Component {
         </div>
 
         <div className="ex-space">
-          <h4 className="ex-title">Exercise 2</h4>
-          <div className="exercise" id="ex-2">
-            {/* your code here */}
-          </div>
-        </div>
+        <h4 className="ex-title">Exercise 2</h4><div className="exercise" id="ex-2"><Home items={this.state.store} />
+<Landing user={this.state.user} item={this.state.store.find(s => s.hottest)}/>          </div></div>
+       
 
         <div className="ex-space">
           <h4 className="ex-title">Exercise 3</h4>
           <div className="exercise" id="ex-3">
-            {/* your code here */}
+          {this.state.currentPage === 'Landing' ? 
+              <Landing user={this.state.user} item={this.state.store[2]}/>:
+              <Home items={this.state.store} />
+            }
           </div>
         </div>
 
         <div className="ex-space">
           <h4 className="ex-title">Exercise 4</h4>
           <div className="exercise" id="ex-4">
-            {/* your code here */}
+          <Home items={this.state.store} shouldDiscount={this.state.shouldDiscount}/>
           </div>
         </div>
 
